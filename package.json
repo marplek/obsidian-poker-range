@@ -1,7 +1,7 @@
 {
-	"name": "obsidian-poker-range",
+	"name": "poker-range",
 	"version": "1.0.0",
-	"description": "This is a sample plugin for Obsidian (https://obsidian.md)",
+	"description": "Create a poker range grid",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",

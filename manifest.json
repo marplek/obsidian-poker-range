@@ -1,10 +1,10 @@
 {
-	"id": "obsidian-poker-range",
+	"id": "poker-range",
 	"name": "Poker Range",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "This plugin allows you to create a poker range grid in your notes.",
-	"author": "MarpleK",
+	"description": "Create a poker range grid",
+	"author": "marplek",
 	"authorUrl": "https://github.com/marplek",
 	"fundingUrl": "https://github.com/marplek",
 	"isDesktopOnly": false
