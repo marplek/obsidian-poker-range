@@ -44,5 +44,8 @@ Both methods will create an interactive poker range grid in your note.
 
 ### Interacting with the Grid
 
--   Click on cells in the grid to select or deselect hands
+-   Click on individual cells to select or deselect hands
+-   Click and drag to select multiple hands at once
+-   The first click determines whether you're selecting or deselecting hands
+-   Release the mouse button or move out of the grid to end the selection
 -   The plugin will automatically update the range information in your note

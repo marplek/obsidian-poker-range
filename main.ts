@@ -132,7 +132,7 @@ class Grid {
 				const cell = document.createElement('div');
 				cell.className = 'poker-range-cell';
 				cell.style.userSelect = 'none';
-				let content;
+				let content: string;
 				if (i < j) {
 					content = `${this.values[i]}${this.values[j]}s`;
 					cell.classList.add('poker-range-suited');
