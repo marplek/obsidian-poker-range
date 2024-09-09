@@ -1,4 +1,5 @@
 import { App, Notice, Plugin, PluginSettingTab, Setting, MarkdownPostProcessorContext, Editor, MarkdownView } from 'obsidian';
+import './styles.css';
 
 interface PokerRangeSettings {
 	defaultRange: string;
@@ -38,8 +39,8 @@ export default class PokerRangePlugin extends Plugin {
 		});
 
 		this.addCommand({
-			id: 'insert-poker-range',
-			name: 'Insert Poker Range Table',
+			id: 'insert-range-table',
+			name: 'Insert Range Table', 
 			editorCallback: (editor: Editor, view: MarkdownView) => {
 				const cursor = editor.getCursor();
 				const range = this.settings.defaultRange;
@@ -131,7 +132,6 @@ class Grid {
 			for (let j = 0; j < 13; j++) {
 				const cell = document.createElement('div');
 				cell.className = 'poker-range-cell';
-				cell.style.userSelect = 'none';
 				let content: string;
 				if (i < j) {
 					content = `${this.values[i]}${this.values[j]}s`;

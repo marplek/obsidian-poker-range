@@ -12,6 +12,7 @@
 }
 
 .poker-range-cell {
+    user-select: none;
     aspect-ratio: 1;
     display: flex;
     align-items: center;

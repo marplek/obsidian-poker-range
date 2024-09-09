@@ -31,12 +31,18 @@ The plugin allows you to customize the default range for new grids. Go to `Setti
 AA,87o
 ```
 
-Note: Replace `[enter random alphanumeric string]` with any random alphanumeric string of your choice. Ex:grid-1724057738028-fhfj9uk6k
+Note: Replace `[enter random alphanumeric string]` with any random alphanumeric string of your choice.
+Ex:
+
+```poker-range
+<!-- grid-id: grid-1725446018704-29wjpy1f1 -->
+AA,KK,AKs,AQs,AJs,ATs,A9s,A8s,A7s,A6s,A5s,A4s,A3s
+```
 
 2. Use the command palette:
 
     1. Press `Ctrl+P` (or `Cmd+P` on Mac) to open the command palette
-    2. Type "Insert Poker Range Table" and select the command
+    2. Type "Insert Range Table" and select the command
 
     This will insert a new poker range grid at your cursor position.
 
