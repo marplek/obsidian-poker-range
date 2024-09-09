@@ -39,8 +39,8 @@ export default class PokerRangePlugin extends Plugin {
 		});
 
 		this.addCommand({
-			id: 'insert-range-table',
-			name: 'Insert Range Table', 
+			id: 'insert-table',
+			name: 'Insert Table', 
 			editorCallback: (editor: Editor, view: MarkdownView) => {
 				const cursor = editor.getCursor();
 				const range = this.settings.defaultRange;
