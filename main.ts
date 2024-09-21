@@ -1,4 +1,4 @@
-import { App, Notice, Plugin, PluginSettingTab, Setting, MarkdownPostProcessorContext, Editor, MarkdownView } from 'obsidian';
+import { App, Notice, Plugin, PluginSettingTab, Setting, MarkdownPostProcessorContext, Editor, MarkdownView, TextComponent } from 'obsidian';
 import './styles.css';
 
 interface PokerRangeSettings {
@@ -40,7 +40,7 @@ export default class PokerRangePlugin extends Plugin {
 
 		this.addCommand({
 			id: 'insert-table',
-			name: 'Insert Table', 
+			name: 'Insert table',
 			editorCallback: (editor: Editor, view: MarkdownView) => {
 				const cursor = editor.getCursor();
 				const range = this.settings.defaultRange;
@@ -193,6 +193,7 @@ class Grid {
 class PokerRangeSettingTab extends PluginSettingTab {
 	plugin: PokerRangePlugin;
 	gridContainer: HTMLElement;
+	rangeTextComponent: TextComponent;
 
 	constructor(app: App, plugin: PokerRangePlugin) {
 		super(app, plugin);
@@ -204,24 +205,32 @@ class PokerRangeSettingTab extends PluginSettingTab {
 		containerEl.empty();
 
 		new Setting(containerEl)
-			.setName('Default Range')
+			.setName('Default range')
 			.setDesc('Set the default poker range (comma-separated)')
-			.addText(text => text
-				.setPlaceholder('AKs,QJs')
-				.setValue(this.plugin.settings.defaultRange)
-				.onChange(async (value) => {
-					this.plugin.settings.defaultRange = value;
-					await this.plugin.saveSettings();
-					this.updateGrid();
-				}));
+			.addText(text => {
+				this.rangeTextComponent = text;
+				return text
+					.setPlaceholder('AKs,QJs')
+					.setValue(this.plugin.settings.defaultRange)
+					.onChange(async (value) => {
+						this.plugin.settings.defaultRange = value;
+						await this.plugin.saveSettings();
+						this.updateGrid(value);
+					});
+			});
 
 		this.gridContainer = containerEl.createDiv('poker-range-grid-container');
-		this.updateGrid();
+		this.updateGrid(this.plugin.settings.defaultRange);
 	}
 
-	updateGrid() {
+	updateGrid(range: string) {
 		this.gridContainer.empty();
-		const grid = this.plugin.grid.render();
-		this.gridContainer.appendChild(grid);
+		const grid = new Grid('settings', range.split(','), (selectedCodes) => {
+			const newRange = selectedCodes.join(',');
+			this.plugin.settings.defaultRange = newRange;
+			this.plugin.saveSettings();
+			this.rangeTextComponent.setValue(newRange);
+		});
+		this.gridContainer.appendChild(grid.render());
 	}
 }

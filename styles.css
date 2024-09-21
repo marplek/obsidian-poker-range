@@ -1,11 +1,10 @@
-
 .poker-range-grid {
     display: grid;
     grid-template-columns: repeat(13, 1fr);
     gap: 2px;
     max-width: 500px;
     margin: 20px auto;
-    background-color: #f0f0f0;
+    background-color: var(--background-secondary);
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -17,7 +16,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Arial', sans-serif;
+    font-family: var(--font-interface);
     font-weight: bold;
     font-size: 14px;
     border-radius: 4px;
@@ -50,4 +49,25 @@
     transform: scale(1.1);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+    .poker-range-grid {
+        max-width: 100%;
+        padding: 5px;
+    }
+
+    .poker-range-cell {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .poker-range-grid {
+        gap: 1px;
+    }
+
+    .poker-range-cell {
+        font-size: 8px;
+    }
 }
